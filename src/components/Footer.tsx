@@ -1,12 +1,18 @@
 import { Box, Container, Text, Flex, Link, Stack } from '@chakra-ui/react';
+import { useColorModeValue } from '@/components/ui/color-mode';
 
 const Footer = () => {
   return (
-    <Box as="footer" py={6} bg="gray.900" color="gray.400">
+    <Box
+      as="footer"
+      py={6}
+      bg={useColorModeValue('white', 'gray.800')}
+      color={useColorModeValue('gray.400', 'white')}
+    >
       <Container maxW="container.xl">
         <Flex direction={{ base: 'column', md: 'row' }} justify="space-between" align="center">
           <Text fontSize="sm">
-            &copy; {new Date().getFullYear()} Spotify Explorer. All rights reserved.
+            &copy; {new Date().getFullYear()} Metric Mind ChakraUI. All rights reserved.
           </Text>
           <Stack direction="row" gap={4} mt={{ base: 4, md: 0 }}>
             <Link
@@ -17,10 +23,14 @@ const Footer = () => {
             >
               Spotify API
             </Link>
-            <Link href="https://github.com" target="_blank" rel="noopener noreferrer" fontSize="sm">
+            <Link
+              href="https://github.com/pixelg/spotify-explorer-chakra"
+              target="_blank"
+              rel="noopener noreferrer"
+              fontSize="sm"
+            >
               GitHub
             </Link>
-            <Text fontSize="xs">Not affiliated with Spotify AB</Text>
           </Stack>
         </Flex>
       </Container>

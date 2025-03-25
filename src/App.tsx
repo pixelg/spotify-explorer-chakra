@@ -1,17 +1,18 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import system from './theme';
+import system from '@/theme';
+import { ColorModeProvider } from '@/components/ui/color-mode';
 
 // Pages
-import Layout from './components/Layout';
-import HomePage from './pages/HomePage';
-import CallbackPage from './pages/CallbackPage';
-import DashboardPage from './pages/DashboardPage';
-import CurrentlyPlayingPage from './pages/CurrentlyPlayingPage';
-import RecentlyPlayedPage from './pages/RecentlyPlayedPage';
-import TopItemsPage from './pages/TopItemsPage';
-import NotFoundPage from './pages/NotFoundPage';
+import Layout from '@/components/Layout';
+import HomePage from '@/pages/HomePage';
+import CallbackPage from '@/pages/CallbackPage';
+import DashboardPage from '@/pages/DashboardPage';
+import CurrentlyPlayingPage from '@/pages/CurrentlyPlayingPage';
+import RecentlyPlayedPage from '@/pages/RecentlyPlayedPage';
+import TopItemsPage from '@/pages/TopItemsPage';
+import NotFoundPage from '@/pages/NotFoundPage';
 
 // Create a client
 const queryClient = new QueryClient({
@@ -64,9 +65,11 @@ const router = createBrowserRouter([
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <ChakraProvider value={system}>
-        <RouterProvider router={router} />
-      </ChakraProvider>
+      <ColorModeProvider>
+        <ChakraProvider value={system}>
+          <RouterProvider router={router} />
+        </ChakraProvider>
+      </ColorModeProvider>
     </QueryClientProvider>
   );
 }

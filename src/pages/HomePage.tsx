@@ -74,8 +74,8 @@ const HomePage = () => {
             position="relative"
           >
             <Image
-              src="/hero-image.png"
-              alt="Spotify Explorer"
+              src="/vite.svg"
+              alt="Metric Minds - Spotify Explorer"
               css={{
                 borderRadius: 'xl',
                 boxShadow: '2xl',

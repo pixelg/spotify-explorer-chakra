@@ -45,8 +45,24 @@ export const system = createSystem(defaultConfig, {
     },
     semanticTokens: {
       colors: {
-        'bg.default': { value: 'gray.900' },
-        'fg.default': { value: 'white' },
+        'bg.default': {
+          value: { base: 'white', _dark: 'gray.900' },
+        },
+        'fg.default': {
+          value: { base: 'gray.800', _dark: 'white' },
+        },
+        'bg.subtle': {
+          value: { base: 'gray.100', _dark: 'gray.800' },
+        },
+        'border.default': {
+          value: { base: 'gray.200', _dark: 'gray.700' },
+        },
+        'card.bg': {
+          value: { base: 'white', _dark: 'gray.800' },
+        },
+        'card.border': {
+          value: { base: 'gray.200', _dark: 'gray.700' },
+        },
       },
     },
   },
