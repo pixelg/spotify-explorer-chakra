@@ -73,6 +73,9 @@ const HomePage = () => {
             }}
             position="relative"
           >
+            <Text fontSize="sm" color="gray.500" mt={4}>
+              HERO PLACEHOLDER
+            </Text>
             <Image
               src="/vite.svg"
               alt="Metric Minds - Spotify Explorer"
