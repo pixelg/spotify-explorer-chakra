@@ -16,12 +16,14 @@ import {
 } from '@chakra-ui/react';
 import { toaster } from '@/components/ui/toaster';
 import { useRecentlyPlayed, useUserProfile } from '@/hooks/useSpotifyData';
+import { useAuth } from '@/hooks/useAuth';
 import { createPlaylist, addTracksToPlaylist } from '@/services/spotifyApi';
 import { SpotifyTrack, SpotifyUser } from '@/types/spotify';
 
 const RecentlyPlayedPage = () => {
+  const { authenticated } = useAuth();
   const { data: recentlyPlayed, isLoading } = useRecentlyPlayed(50);
-  const { data: userProfile } = useUserProfile() as { data: SpotifyUser | undefined };
+  const { data: userProfile } = useUserProfile(authenticated) as { data: SpotifyUser | undefined };
   const [selectedTracks, setSelectedTracks] = useState<SpotifyTrack[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [playlistName, setPlaylistName] = useState('');

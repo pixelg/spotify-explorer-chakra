@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import type { SpotifyUser } from '@/types/spotify';
 import {
   getCurrentlyPlaying,
   getQueue,
@@ -57,10 +58,11 @@ export const useTopTracks = (timeRange: TimeRange = 'medium_term', limit: number
 };
 
 // Hook for fetching user profile
-export const useUserProfile = () => {
-  return useQuery({
+export const useUserProfile = (enabled: boolean = true) => {
+  return useQuery<SpotifyUser>({
     queryKey: ['userProfile'],
     queryFn: getUserProfile,
     staleTime: 60 * 60 * 1000,
+    enabled,
   });
 };
