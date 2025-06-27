@@ -1,6 +1,15 @@
-# React + TypeScript + Vite
+# Spotify Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small demo built with React, Chakra UI and TypeScript that lets you explore your Spotify data. The project uses Vite for development.
+
+## Getting started
+
+Install dependencies and start the development server:
+
+```bash
+pnpm install
+pnpm dev
+```
 
 Currently, two official plugins are available:
 
