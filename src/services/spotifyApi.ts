@@ -164,7 +164,7 @@ export const getValidToken = async (): Promise<string> => {
 };
 
 // API request helper with automatic token handling
-const apiRequest = async <T, B extends Record<string, unknown> = Record<string, unknown>>(
+export const apiRequest = async <T, B extends Record<string, unknown> = Record<string, unknown>>(
   endpoint: string,
   method: string = 'GET',
   body?: B
@@ -187,6 +187,10 @@ const apiRequest = async <T, B extends Record<string, unknown> = Record<string, 
 
   if (!response.ok) {
     throw new Error(`API request failed: ${response.statusText}`);
+  }
+
+  if (response.status === 204) {
+    return null as unknown as T;
   }
 
   return (await response.json()) as T;
