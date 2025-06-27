@@ -12,7 +12,7 @@ const Footer = () => {
       <Container maxW="container.xl">
         <Flex direction={{ base: 'column', md: 'row' }} justify="space-between" align="center">
           <Text fontSize="sm">
-            &copy; {new Date().getFullYear()} Metric Mind ChakraUI. All rights reserved.
+            &copy; {new Date().getFullYear()} Metric Minds ChakraUI. All rights reserved.
           </Text>
           <Stack direction="row" gap={4} mt={{ base: 4, md: 0 }}>
             <Link
