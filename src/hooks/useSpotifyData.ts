@@ -8,11 +8,11 @@ import {
   getTopTracks,
   getUserProfile,
 } from '@/services/spotifyApi';
-import { TimeRange } from '@/types/spotify';
+import { TimeRange, CurrentlyPlayingResponse } from '@/types/spotify';
 
 // Hook for fetching currently playing track
 export const useCurrentlyPlaying = () => {
-  return useQuery({
+  return useQuery<CurrentlyPlayingResponse | null>({
     queryKey: ['currentlyPlaying'],
     queryFn: getCurrentlyPlaying,
     refetchInterval: 30000, // Refetch every 30 seconds
