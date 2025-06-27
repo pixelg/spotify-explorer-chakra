@@ -26,9 +26,6 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
       'prettier/prettier': 'error',
-      // Turn off rules that conflict with Prettier
-      'arrow-body-style': 'off',
-      'prefer-arrow-callback': 'off',
     },
   },
 )
