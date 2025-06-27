@@ -1,17 +1,17 @@
 # Spotify Explorer
 
-A small demo built with React, Chakra UI and TypeScript that lets you explore your Spotify data. The project uses Vite for development.
+Spotify Explorer is a React application built with Vite and Chakra UI. Sign in with your Spotify account to view your listening history, top tracks and artists, and more.
 
-## Getting started
+## Running the app
 
-Install dependencies and start the development server:
+Use `pnpm` to install dependencies and start the development server:
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-Currently, two official plugins are available:
+This project uses Vite for bundling. Two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
