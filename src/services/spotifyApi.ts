@@ -188,13 +188,9 @@ export const apiRequest = async <T, B extends Record<string, unknown> = Record<s
   if (!response.ok) {
     throw new Error(`API request failed: ${response.statusText}`);
   }
-  if (response.status === 204 || response.status === 205) {
-    return null as unknown as T;
-  }
-
-  if (response.status === 204) {
-    return null as unknown as T;
-  }
+if (response.status === 204 || response.status === 205) {
+  return null as unknown as T;
+}
 
   return (await response.json()) as T;
 };
