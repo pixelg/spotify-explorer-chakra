@@ -188,6 +188,9 @@ const apiRequest = async <T, B extends Record<string, unknown> = Record<string, 
   if (!response.ok) {
     throw new Error(`API request failed: ${response.statusText}`);
   }
+  if (response.status === 204 || response.status === 205) {
+    return null as unknown as T;
+  }
 
   return (await response.json()) as T;
 };
@@ -195,8 +198,8 @@ const apiRequest = async <T, B extends Record<string, unknown> = Record<string, 
 // API Endpoints
 
 // Get currently playing track
-export const getCurrentlyPlaying = (): Promise<CurrentlyPlayingResponse> => {
-  return apiRequest<CurrentlyPlayingResponse>('/me/player/currently-playing');
+export const getCurrentlyPlaying = (): Promise<CurrentlyPlayingResponse | null> => {
+  return apiRequest<CurrentlyPlayingResponse | null>('/me/player/currently-playing');
 };
 
 // Get playback queue
