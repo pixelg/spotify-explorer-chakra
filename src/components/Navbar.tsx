@@ -2,14 +2,10 @@ import { Box, Flex, Button, Stack, Image, Text } from '@chakra-ui/react';
 import { useColorModeValue, ColorModeButton } from '@/components/ui/color-mode';
 import { useAuth } from '@/hooks/useAuth';
 import { useUserProfile } from '@/hooks/useSpotifyData';
-import { useState, useEffect } from 'react';
+import type { SpotifyUser } from '@/types/spotify';
 import { NavLink } from '@/components/ui/link';
 import { Link as RouterLink } from 'react-router-dom';
 import MetricMindsLogo from '@/assets/metric-minds-logo.svg';
-interface UserProfile {
-  display_name: string;
-  images?: Array<{ url: string }>;
-}
 
 const LogoLink = () => (
   <Box display="flex" alignItems="center">
@@ -36,21 +32,10 @@ const Navbar = () => {
   const bgColor = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('black', 'white');
 
-  const [profile, setProfile] = useState<UserProfile | null>(null);
-  const [loading, setLoading] = useState(false);
-
-  const userProfileQuery = useUserProfile();
-  const effectiveQuery = authenticated ? userProfileQuery : null;
-
-  useEffect(() => {
-    if (authenticated && effectiveQuery) {
-      setProfile(effectiveQuery.data as UserProfile);
-      setLoading(effectiveQuery.isLoading);
-    } else {
-      setProfile(null);
-      setLoading(false);
-    }
-  }, [authenticated, effectiveQuery]);
+  const { data: profile, isLoading: loading } = useUserProfile(authenticated) as {
+    data: SpotifyUser | undefined;
+    isLoading: boolean;
+  };
 
   return (
     <Box

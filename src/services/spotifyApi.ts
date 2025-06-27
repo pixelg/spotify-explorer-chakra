@@ -8,6 +8,7 @@ import {
   TopItemsResponse,
   TimeRange,
   SpotifyPlaylist,
+  SpotifyUser,
 } from '@/types/spotify';
 
 const CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
@@ -252,8 +253,9 @@ export const addTracksToPlaylist = (
 };
 
 // Get user profile
+
 export const getUserProfile = () => {
-  return apiRequest('/me');
+  return apiRequest<SpotifyUser>('/me');
 };
 
 // Check if user is authenticated
